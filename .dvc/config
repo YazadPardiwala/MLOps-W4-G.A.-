@@ -1,0 +1,4 @@
+[core]
+    remote = gs_remote
+['remote "gs_remote"']
+    url = gs://mlops-course-winter-bloom-473303-g3-week1-ga/week4-ga/dvc
