@@ -15,6 +15,8 @@ jobs:
         with:
           python-version: "3.12.3"
       - uses: iterative/setup-cml@v2
+        env: 
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: run evals and tests
         run: |
           pip install -r requirements.txt
@@ -30,4 +32,5 @@ jobs:
           echo "exact model metrics" >> report.md
           cat 'eval results.txt' >> report.md
           cml comment create --publish report.md
+
 
