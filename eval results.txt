@@ -1,1 +1,0 @@
-The model has a train percision of 0.95625 and a test precision of 0.9573170731707317.

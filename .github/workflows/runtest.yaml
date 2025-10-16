@@ -1,0 +1,32 @@
+name: model tester
+on: 
+  push:
+    branches:
+      - development
+permissions:
+  contents: write
+  pull requests: write
+jobs:
+  test_model:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12.3"
+      - uses: iterative/setup-cml@v2
+      - name: run evals and tests
+        run: |
+          pip install -r requirements.txt
+          pytest -v 2>&1 > test_report.txt
+      - name: Create CML report
+        env:
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "pytest report" > report.md
+          echo "\'\'\'" >> report.md
+          cat test_report.txt >> report.md
+          echo "\'\'\'" >> report.md
+          echo "exact model metrics" >> report.md
+          cat 'eval results.txt' >> report.md
+          cml comment create --publish report.md
