@@ -5,7 +5,7 @@ on:
       - development
 permissions:
   contents: write
-  pull requests: write
+  pull-requests: write
 jobs:
   test_model:
     runs-on: ubuntu-latest
@@ -30,3 +30,4 @@ jobs:
           echo "exact model metrics" >> report.md
           cat 'eval results.txt' >> report.md
           cml comment create --publish report.md
+
