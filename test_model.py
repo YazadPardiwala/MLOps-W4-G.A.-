@@ -26,7 +26,7 @@ def test_model():
     print("The model has a train percision of ", tr_prec, " and a test precision of", te_prec, " using V1 of the dataset with 101 samples" )
 
     with open("eval results.txt", "w") as f:
-        f.write(f"The model has a train percision of {tr_prec} and a test precision of {te_prec}.")
+        f.write(f"The model has a train percision of {tr_prec} and a test precision of {te_prec} when trained on the dataset with {data.shape[0]} samples.")
 
     assert tr_prec >= 0.95
     assert te_prec >= 0.90
