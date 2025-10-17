@@ -1,2 +1,3 @@
 dummy text
 more nonsense
+more nonsense, this time with git object something access
